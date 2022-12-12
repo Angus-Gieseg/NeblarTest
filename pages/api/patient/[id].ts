@@ -5,11 +5,12 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Patient>
 ) {
-  if (req.method !== "GET") {
+  if (req.method !== "GET" && req.method !== "POST") {
     return res.status(405).end("Method not allowed");
   }
-
-  res.status(200).json(examplePatientRecord);
+  setTimeout(() => {
+    res.status(200).json(examplePatientRecord);
+  }, 1000);
 }
 
 export type Patient = typeof examplePatientRecord;
