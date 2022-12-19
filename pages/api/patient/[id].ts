@@ -1,16 +1,21 @@
 // API route to retrieve patient data
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Patient>
 ) {
   if (req.method !== "GET" && req.method !== "POST") {
     return res.status(405).end("Method not allowed");
   }
-  setTimeout(() => {
-    res.status(200).json(examplePatientRecord);
-  }, 1000);
+
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("");
+    }, 1000);
+  });
+
+  res.status(200).json(examplePatientRecord);
 }
 
 export type Patient = typeof examplePatientRecord;
