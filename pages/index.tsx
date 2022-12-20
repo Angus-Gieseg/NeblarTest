@@ -46,7 +46,7 @@ export default function Home() {
     }
   }, [form, data]);
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error) return <>An error has occurred: {error.message}</>;
 
   const updatePatient = (formData: object) => {
     console.log(formData);
